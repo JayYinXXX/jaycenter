@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="center.jay.jaycenter.mapper.ArticleContentMapper">
+
+    <insert id="add"  keyProperty="id"  useGeneratedKeys="true" parameterType="ArticleContent" >
+        insert into article_content ( aid, content) values ( #{aid}, #{content})
+    </insert>
+
+    <delete id="delete">
+        delete from article_content where id=#{id}
+    </delete>
+
+    <update id="update" parameterType="ArticleContent">
+        update article_content set content = #{content} where id = #{id}
+    </update>
+
+    <select id="getByAid" resultType="ArticleContent">
+        select * from article_content where aid=#{aid}
+    </select>
+
+</mapper>

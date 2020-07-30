@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/foundation/5.5.3/css/foundation.min.css">
+    <link rel="stylesheet" href="http://static.runoob.com/assets/foundation-icons/foundation-icons.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/foundation/5.5.3/js/foundation.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/foundation/5.5.3/js/vendor/modernizr.js"></script>
+
+    <link rel="stylesheet" href="editormd/css/editormd.css" />
+    <link rel="stylesheet" href="editormd/css/editormd.preview.css" />
+
+    <link rel="stylesheet" href="css/jay.css" />
+    <script src="js/jay.js"></script>
+</head>
+
+<script>
+    $(document).ready(function() {
+        $(document).foundation();
+    })
+
+    $(function() {
+        $("#sideNavBtn").click(function() {
+            $("#sideNav").fadeToggle();
+        });
+    })
+</script>
+
+<style>
+    #homeTop {
+        /* background-image: url("img/${u.id}/home.jpg"); */
+        background-color: #eeaaaa;
+        height: 100vh;
+    }
+    #articleBody {
+        max-width:100%;
+        min-height: 100vh;
+    }
+    
+    #sideNavBtn {
+        position: fixed;
+        left: 100px;
+        top: 4px;
+        z-index: 901;
+    }
+    #sideNav {
+        overflow: auto;
+        width: 20vw;
+        z-index: 900;
+    }
+    #sideNav .accordion-navigation a{
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+</style>
+
+<body>
+
+    <title>editor-test</title>
+    <div class="workingarea">
+        <!-- 侧边栏 -->
+        <a id="sideNavBtn"><i class="fi-paw">category</i></a>
+        <div id="sideNav" class="jayModal">
+            <ul class="accordion" data-accordion>
+                <li class="accordion-navigation">
+                    <a href="#demo">分类1</a>
+                    <div id="demo" class="content" style="padding-top: 0; padding-bottom: 0;">
+                        <a style="display: block;"><i class="fi-page"> Demo 1</i></a>
+                        <a style="display: block;"><i class="fi-page"> Demo 2</i></a>
+                    </div>
+                </li>
+                <li class="accordion-navigation">
+                    <a href="#demo2">分类2</a>
+                    <div id="demo2" class="content">
+                        Demo 1
+                    </div>
+                </li>
+                <li class="accordion-navigation">
+                    <a href="#demo3">分类3</a>
+                    <div id="demo3" class="content">
+                        Demo 1
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 主页顶部区块 -->
+        <div id="homeTop">
+            hello
+        </div>
+
+        <!-- <%-- 文章浏览/编辑区 --%> -->
+        <div class="panel">
+            <!-- <%-- markdown 编辑区 --%> -->
+            <div id="articleHead">
+                <input id="articleName" value="${a.name}">
+            </div>
+
+            <div id="articleBody" class="panel">
+                <!-- <%-- 定义ToC容器（目录容器） --%> -->
+                <div class="panel" id="tocContainer">#custom-toc-container</div>
+
+                <div id="editor">
+                    <textarea style="display:none;"></textarea>
+                </div>
+            </div>
+            <button id="articleSubmit" type="button" class="button" >Submit</button>
+
+            <!-- <%--        <script src="${pageContext.request.contextPath}/editormd/examples/js/jquery.min.js"></script>--%> -->
+            <script src="editormd/editormd.js"></script>
+            <script type="text/javascript">
+                let testEditor;
+                $(function() {
+                    // <%-- 初始化editor --%>
+                    testEditor = editormd("editor", {
+                        height : "600px",
+                        syncScrolling : "single",
+                        path : "editormd/lib/",
+                        dialogLockScreen : false,
+                        autoFocus : false,
+                        tocContainer : "#tocContainer"
+                    });
+                });
+            </script>
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>

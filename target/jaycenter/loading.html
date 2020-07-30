@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/foundation/5.5.3/css/foundation.min.css">
+    <link rel="stylesheet" href="http://static.runoob.com/assets/foundation-icons/foundation-icons.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/foundation/5.5.3/js/foundation.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/foundation/5.5.3/js/vendor/modernizr.js"></script>
+
+    <link rel="stylesheet" href="editormd/css/editormd.css" />
+    <link rel="stylesheet" href="editormd/css/editormd.preview.css" />
+
+    <link rel="stylesheet" href="css/jay.css" />
+    <script src="js/jay.js"></script>
+    <link rel="shortcut icon" href="system_img/favicon.ico" />
+</head>
+
+<style>
+    #homeTop {
+        background-image: url("home.png");
+        background-position: center;
+        background-size: cover;
+        background-color: #eeaaaa;
+        height: 100vh;
+    }
+    #huafeichi {
+        display: inline-block;
+        width: 25rem;
+        margin-left: 5rem;
+        margin-top: 5rem;
+
+        font-weight: bold;
+        font-family: "Yanone Kaffeesatz", "Lucida Grande", Lucida, Verdana, sans-serif;
+        font-size: 4rem;
+        color: #fff;
+        letter-spacing: 0.03em;
+        text-shadow: rgba(0,0,0,0.1) 0 20px 80px;
+    }
+    a:hover {
+        animation: loading 5s linear infinite;
+    }
+
+
+    /*
+    loading动画
+        loading容器元素 id="loading"
+    */
+    #loading {
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        background-color: #fff;
+        width: 100vw;
+        height: 100vh;
+        text-align:center;
+    }
+    /*动画效果*/
+    /* 旋转id为"loading-img"的image */
+    #loading-img {
+        width: 5rem;
+        height: 5rem;
+        margin-top: 40vh;
+        display: inline-block;
+        /*animation (动画) :绑定选择器, 4s完成动画 linear(匀速) infinite(循环) */
+        animation: loading 5s linear infinite;
+    }
+
+    /*通过@keyframes规则,能够创建动画 , que 定义动画的名称 可自己定义*/
+    @keyframes loading {
+        /*以百分比来规定改变发生的时间 也可以通过"from"和"to",等价于0% 和 100%*/
+        0% {
+            /*rotate(2D旋转) scale(放大或者缩小) translate(移动) skew(翻转)*/
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(180deg);
+        }
+    }
+
+    
+</style>
+
+<script>
+    $(document).ready(function() {
+        $(document).foundation();
+    });
+
+    /*
+    loading动画
+    */
+    // Loading阶段检测
+    document.onreadystatechange = function () {
+        if (document.readyState == "complete"){
+            loadingFade();
+        }
+    }
+    // 方法
+    function loadingFade() {
+        // loading模块默认ID
+        let loadingId = "loading";
+        // loading画面淡出
+        $("#" + loadingId).fadeOut(1000);
+        // 动画效果结束删除遮罩
+        setTimeout(function () { 
+            $("#" + loadingId).remove();
+        }, 1000);
+    }
+</script>
+
+<body>
+
+    <title>主页-浏览模式</title>
+    <div class="workingarea">
+        
+        <!-- 主页顶部区块 -->
+        <div id="homeTop">
+            <div id="huafeichi">花落城中池，花非池中物。</div>
+        </div>
+
+        <div style="position: fixed; left: 0; top: 0; z-index: 901; width: 3rem; height: 10rem">
+            <a id="userModalBtn" style="display: inline-block;"><img src="system_img/001.png" alt="123"></a>
+            <a href="#">123</a>
+        </div>
+
+        <div id="loading">
+            <img id="loading-img" src="system_img/black_logo.png">
+        </div>
+        
+
+        
+    </div>
+
+
+</body>
+
+</html>

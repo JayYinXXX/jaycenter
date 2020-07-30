@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="center.jay.jaycenter.mapper.ArticleMapper">
+
+    <insert id="add"  keyProperty="id"  useGeneratedKeys="true" parameterType="Article" >
+        insert into article ( name, cid, uid, createDate, updateUid, updateDate,
+                                deleteUid, deleteDate, isDeleted, version, isTop,
+                                type, readCount, likeCount, `rank`)
+                    values ( #{name}, #{cid}, #{uid}, #{createDate}, #{updateUid}, #{updateDate},
+                            #{deleteUid}, #{deleteDate}, #{isDeleted}, #{version}, #{isTop},
+                             #{type}, #{readCount}, #{likeCount}, #{rank})
+    </insert>
+
+    <delete id="delete">
+        delete from article where id = #{id}
+    </delete>
+
+    <!-- 逻辑删除 -->
+    <update id="deleteLogic" parameterType="Article">
+        update article set
+                           deleteUid = #{deleteUid}, deleteDate = #{deleteDate},
+                           isDeleted = #{isDeleted}
+        where id = #{id}
+    </update>
+
+    <!-- 编辑需要修改7个字段 -->
+    <update id="update" parameterType="Article" >
+        update article set
+                           name = #{name}, cid = #{cid}, version = #{version},
+                           isTop = #{isTop}, type = #{type},
+                           updateUid = #{updateUid}, updateDate = #{updateDate}, `rank` = #{rank}
+                        <!--
+                        uid = #{uid}, createDate = #{createDate},
+                        deleteUid = #{deleteUid}, deleteDate = #{deleteDate},
+                        isDeleted = #{isDeleted},  readCount = #{readCount}, likeCount = #{likeCount}
+                        -->
+        where id = #{id}
+    </update>
+
+    <select id="get" resultType="Article">
+        select * from article where id = #{id}
+    </select>
+
+    <select id="list" resultType="Article">
+        select * from article order by id desc
+    </select>
+
+    <!-- 条件查询 -->
+    <select id="listByUid" resultType="Article">
+        select * from article where uid = #{uid} order by id desc
+    </select>
+
+    <select id="listByCid" resultType="Article">
+        select * from article where cid = #{cid} order by `rank`
+    </select>
+
+    <select id="listByCreateDate" resultType="Article">
+        SELECT * FROM article WHERE uid = #{0} ORDER BY createDate DESC LIMIT #{1};
+    </select>
+
+    <select id="listByTop" resultType="Article">
+        SELECT * FROM article WHERE uid = #{uid} AND isTop=true ORDER BY createDate DESC;
+    </select>
+</mapper>

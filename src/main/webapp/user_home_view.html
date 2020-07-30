@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/foundation/5.5.3/css/foundation.min.css">
+    <link rel="stylesheet" href="http://static.runoob.com/assets/foundation-icons/foundation-icons.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/foundation/5.5.3/js/foundation.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/foundation/5.5.3/js/vendor/modernizr.js"></script>
+
+    <link rel="stylesheet" href="editormd/css/editormd.css" />
+    <link rel="stylesheet" href="editormd/css/editormd.preview.css" />
+
+    <link rel="stylesheet" href="css/jay.css" />
+    <script src="js/jay.js"></script>
+</head>
+
+<style>
+    /* body {
+        font-family: SimSun;
+    } */
+
+    #homeTop {
+        position: relative;
+        background-image: url("home.png");
+        background-position: center;
+        background-size: cover;
+        background-color: #eeaaaa;
+        height: 100vh;
+    }
+    .white-title {
+        font-weight: bold;
+        /* font-family: "Merriweather","Open Sans","Microsoft Jhenghei","Microsoft Yahei",sans-serif; */
+        font-family: "Yanone Kaffeesatz", "Lucida Grande", Lucida, Verdana, sans-serif;
+        font-size: 4rem;
+        color: #fff;
+        letter-spacing: 0.03em;
+        text-shadow: rgba(0,0,0,0.1) 0 20px 80px;
+    }
+    #huafeichi {
+        /* display: inline-block; */
+        position: absolute;
+        width: 25rem;
+        left: 5rem;
+        top: 5rem;
+    }
+    #articleTitle {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+
+    /* 麦哲伦导航 */
+    #middle-nav {
+        font-size: 150%;
+        padding: 2rem 0 2rem 0;
+    }
+
+    .sub-nav dd {
+        font-size: 130%;
+    }
+
+    [data-magellan-expedition], [data-magellan-expedition-clone] {
+        padding: 1px;
+    }
+
+    /* 中部区域 */
+    #homeMiddle {
+        max-width: 62.5rem; 
+        margin-left: auto; 
+        margin-right: auto;
+    }
+    /* 中部内容面板 */
+    .middle-div {
+        margin-top: 2rem;
+    }
+
+    #line-nav {
+        float: right;
+    }
+
+    .article-tag {
+        margin: 0;
+        padding: 0.3rem 1rem 0.3rem 1rem;
+    }
+
+    #article-list {
+        left:0;
+        right:0;
+        top:0;
+        bottom:0;
+        margin: auto;
+        width: 50vw;
+        height: 98vh;
+    }
+
+    div.jay-line-row1 {
+        height: 5px;
+        transform:scale(1 , 0.2);
+    }
+
+    #diary-modal {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 50vw;
+        height: 80vh;
+        margin: auto;
+    }
+
+    #diary-modal a.jay-anchor {
+        margin-bottom: 0.3rem;
+    }
+
+    .days {
+        padding: 10px 0;
+        background: rgb(236, 236, 236);
+        margin: 0;
+    }
+    .days li {
+        list-style-type: none;
+        display: inline-block;
+        width: 13%;
+        text-align: center;
+        margin-bottom: 5px;
+        color: #777;
+    }
+    .days li a[flag] {
+        /* padding: 5px; */
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    .days li a[flag = "9"] {
+        background: #1abc9c;
+        color: white !important
+    }
+    .days li a[flag = "1"] {
+        background-color:lightcoral;
+        color: white !important
+    }
+
+
+</style>
+
+<script>
+    $(document).ready(function() {
+        $(document).foundation();
+    });
+
+    // 置顶开关
+    $(function() {
+        $("#topSwitch").prop("checked", "checked");
+        $("#topSwitch").click(function() {
+            if ($(this).prop("checked") == true) {
+                $("#switchValue").text("on");
+            }
+            else {
+                $("#switchValue").text("off");
+            }
+        });
+    });
+</script>
+
+<body>
+
+    <title>主页-浏览模式</title>
+    <div class="workingarea">
+        
+        <!-- 主页顶部区块 -->
+        <div id="homeTop">
+            <div id="huafeichi" class="white-title">花落城中池，花非池中物。</div>
+            
+            <div id="articleTitle">
+                <span class="white-title">百年未有之大变局</span>
+            </div>
+        </div>
+
+        <div style="position: fixed; left: 0; top: 0; z-index: 901; width: 3rem; height: 10rem">
+            <a><img src="system_img/colourful_logo.png" alt="123"></a>
+            <a href="#"><i class="fi-list-bullet" style="display: inline-block; width: 2.5rem;"></i></a>
+        </div>
+
+        <!-- 麦哲伦导航 -->
+        <div id="middle-nav">
+            <div data-magellan-expedition="fixed">
+                <dl class="sub-nav">
+                    <dd data-magellan-arrival="page1" style="margin-left: 10rem;"><a href="#page1">动态</a></dd>
+                    <dd data-magellan-arrival="page2"><a href="#page2">笔记</a></dd>
+                    <dd data-magellan-arrival="page3"><a href="#page3">相册</a></dd>
+                </dl>
+            </div>
+        </div>
+
+        <!-- 动态 -->
+        <div style="background-color: rgb(236, 236, 236); overflow: hidden;">
+            <a name="page1"></a>
+            <h3 data-magellan-destination="page1">ToDoList</h3>
+            <div class="row" style="max-width: 62.5rem; padding: 1rem 0 1rem 0;">
+                <div class="large-7 columns">
+                    <a id="diary-modal-button" class="th jay-modal-open" jay-modal-id="diary-modal" style="max-width: 70%; max-height: 100%;"><img src="home.png" alt="123"></a>
+                    <h4>百年未有之大变局</h4>
+                </div>
+
+                <div class="large-5 columns">
+                    <ul class="days">  
+                        <li><a>1</a></li>
+                        <li><a>2</a></li>
+                        <li><a>3</a></li>
+                        <li><a>4</a></li>
+                        <li><a>5</a></li>
+                        <li><a>6</a></li>
+                        <li><a>7</a></li>
+                        <li>1</li>
+                        <li><a flag="1">2</a></li>
+                        <li><a flag="9">3</a></li>
+                        <li><a>4</a></li>
+                        <li><a>5</a></li>
+                        <li><a>6</a></li>
+                        <li><a>7</a></li>
+                    
+                    </ul>
+                </div>
+            </div>
+            <div id="diary-modal" class="jay-modal">
+                <a href="#" class="jay-anchor" >花非池</a>
+                <a href="#" class="jay-anchor" >花非池</a>
+            </div>
+        </div>
+        
+        <div id="homeMiddle">
+
+            <!-- 最近笔记 -->
+            <div class="middle-div">
+                <a name="page2"></a>
+                <h3 data-magellan-destination="page2">最近笔记</h3>
+                <div class="jay-line-row1"></div>
+
+                <div class="row">
+                    <div class="large-7 columns">
+                        <a href="#" style="font-size:200%;">为中华之崛起而读书为中华之崛起</a>
+                    </div>
+                    <div class="large-5 columns">
+                        <div>2020-5-23 置顶</div>
+                        <div>
+                            <a href="#" class="button info round article-tag">标签0</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="jay-line-row1"></div>
+
+                <div class="row">
+                    <div class="large-7 columns">
+                        <a href="#" style="font-size:200%;">为中华之崛起而读书</a>
+                    </div>
+                    <div class="large-5 columns">
+                        <div>2020-5-23 置顶</div>
+                        <div>
+                            <a href="#" class="button info round article-tag">标签0</a>
+                            <a href="#" class="button info round article-tag">标签0</a>
+                            <a href="#" class="button info round article-tag">标签0</a>
+                            <a href="#" class="button info round article-tag">标签0</a>
+                            <a href="#" class="button info round article-tag">标签0</a>
+                            <a href="#" class="button info round article-tag">标签0</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="jay-line-row1"></div>
+
+            </div>
+
+            <!-- 相册 -->
+            <div class="middle-div" style="background-color: #eeaaaa;">
+                <a name="page3"></a>
+                <h3 data-magellan-destination="page3">相册</h3>
+                <p>滚动屏幕，查看导航栏上的变化。</p>
+                <p>滚动屏幕，查看导航栏上的变化。</p>
+                <p>滚动屏幕，查看导航栏上的变化。</p>
+                <p>滚动屏幕，查看导航栏上的变化。</p>
+                <p>滚动屏幕，查看导航栏上的变化。</p>
+                <p>滚动屏幕，查看导航栏上的变化。</p>
+                <p>滚动屏幕，查看导航栏上的变化。</p>
+            </div>
+
+            <div class="switch" style="margin: 0;">
+                <span id="topSwitchValue">置顶:</span>
+                <input id="topSwitch" type="checkbox">
+                <label for="topSwitch"></label>
+
+                <span id="privateSwitchValue">置顶:</span>
+                <input id="privateSwitch" type="checkbox">
+                <label for="privateSwitch"></label>
+            </div>
+        </div>
+
+        
+    </div>
+
+
+</body>
+
+</html>

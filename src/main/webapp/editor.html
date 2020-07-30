@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/foundation/5.5.3/css/foundation.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/foundation/5.5.3/js/foundation.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/foundation/5.5.3/js/vendor/modernizr.js"></script>
+
+    <link rel="stylesheet" href="editormd/css/editormd.css" />
+    <link rel="stylesheet" href="editormd/css/editormd.preview.css" />
+
+    <link rel="stylesheet" href="css/jay.css" />
+    <script src="js/jay.js"></script>
+</head>
+
+<script>
+    $(document).ready(function() {
+        $(document).foundation();
+    })
+
+    $(function(){
+    // scroll滚动目录的初始位置，在对应页面去获取
+    let top0 = $(".scroll").offset().top;
+    let left0 = $(".scroll").offset().left;
+    let width0 = $(".scroll").outerWidth();
+    let height0 = $(".scroll").outerHeight();
+    // 滚动条监听
+    $(window).scroll(function(){
+        // 滚动条位移
+        let win_top = $(this).scrollTop();
+        // 父容器，容纳高度
+        let containerHight = $(".scroll").parent().height();
+        // 上
+        if(win_top < top0){
+            $(".scroll").css({"position":"absolute", "left":0, "top":0, "width":width0, "height":height0});
+        }
+        // 中
+        if(win_top >= top0 && win_top < top0 + containerHight - height0){
+            $(".scroll").css({"position":"fixed", "left":left0, "top":0, "width":width0, "height":height0});
+        }
+        // 下
+        if (win_top >= top0 + containerHight - height0) {
+            $(".scroll").css({"position":"absolute", "left":0, "top":containerHight-height0, "width":width0, "height":height0});
+        }
+　　})
+})
+
+</script>
+
+<body>
+    <style>
+        #homeTop {
+            /* background-image: url("img/${u.id}/home.jpg"); */
+            background-color: #eeaaaa;
+            height: 100vh;
+        }
+
+        #articleBody {
+            max-width:100%;
+            min-height: 100vh;
+        }
+        #catalog {
+            border: solid 1px #666666;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+            padding: 5px 5px 5px 5px;
+        }
+        #content {
+            background-color: rgb(255, 255, 255);
+            border: solid 1px #666666;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+            padding: 5px 5px 5px 5px;
+        }
+
+        
+    </style>
+
+
+    <!-- 主页顶部区块 -->
+    <div id="homeTop">
+        hello
+    </div>
+
+    <title>editor-test</title>
+    <div class="workingarea">
+        <div class="panel">
+            <!-- markdown 编辑区 -->
+            <div id="articleHead">
+                <input id="articleName" value="name">
+            </div>
+            
+            <div id="articleBody" class="row panel" data-equalizer>
+                <div class="large-3 columns" style="position: relative;" data-equalizer-watch>
+                    <div id="catalog" class="scroll" >
+                        <!-- 定义ToC容器（目录容器） -->
+                        <div style="overflow: auto; height: 98%;">
+                            <div id="tocContainer">#custom-toc-container</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="large-9 columns" style="padding-right: 0;" data-equalizer-watch>
+                    <div id="content">
+                        <div id="editor">
+                            <textarea style="display:none;">
+### title
+#### content1
+- test1
+- test2
+
+#### content2
+#### 1
+#### 1
+#### 1
+#### 1
+#### 1
+#### 1
+#### 1
+#### 1
+#### 1
+#### 1
+#### 1
+#### 1
+#### 1
+#### 1
+#### 1
+#### 1
+#### 1
+#### 1
+#### 1
+#### 2
+#### 2
+#### 2
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="background-color: aquamarine;">123456</div>
+
+            <button id="articleSubmit" type="button" class="button" >Submit</button>
+
+            <script src="editormd/editormd.js"></script>
+            <script src="editormd/lib/marked.min.js"></script>
+            <script src="editormd/lib/prettify.min.js"></script>
+            <script src="editormd/lib/raphael.min.js"></script>
+            <script src="editormd/lib/underscore.min.js"></script>
+            <script src="editormd/lib/sequence-diagram.min.js"></script>
+            <script src="editormd/lib/flowchart.min.js"></script>
+            <script src="editormd/lib/jquery.flowchart.min.js"></script>
+
+            <!-- 初始化editor -->
+            <script type="text/javascript">
+                let editorView;
+                $(function() {
+                    editorView = editormd.markdownToHTML("editor", {
+                        tocContainer : "#tocContainer"
+                    });
+                });
+            </script>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Foundation 实例</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/foundation/5.5.3/css/foundation.min.css">
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/foundation/5.5.3/js/foundation.min.js"></script>
+  <script src="https://cdn.staticfile.org/foundation/5.5.3/js/vendor/modernizr.js"></script>
+  <link rel="stylesheet" href="http://static.runoob.com/assets/foundation-icons/foundation-icons.css">
+
+  
+  <link rel="stylesheet" href="css/jay.css">
+  <script src="js/jay.js"></script>
+
+</head>
+
+<style>
+    /* 用户模态 */
+    #userModalButton {
+        position: fixed;
+        left: 2px;
+        top: 4px;
+        z-index: 901;
+    }
+
+    /* 登陆模态框 */
+    #loginModal {
+        margin:auto;
+        left:0;
+        right:0;
+        top:0;
+        bottom:0;
+        width:40vw;
+        height:50vh;
+    }
+
+    
+</style>
+
+<script>
+    $(function () {
+        // 登陆监听
+        $(".checkLogin").click(function () {
+            // let url = "check_login";
+            let isLogined = true;
+    
+            let result = "no";
+            if (result === "no") {
+                isLogined = false;
+                $("#loginModalButton").click();
+            }
+
+            return isLogined;
+        });
+
+        // 保留滚动效果隐藏滚动条
+        // 这里如果该元素是使用百分比设置的值，用jQ会得到百分比的数值，而不是真实尺寸的数值，所以只能用js
+        $("#userModalButton").click(function(){
+            let jayOuterWidth = document.getElementById("outerContainer").clientWidth;
+            $("#element").width(jayOuterWidth);
+        });
+
+        // test 默认打开模态框
+        // $("#userModalButton").click();
+    })
+
+</script>
+
+<body>
+    <div>
+        <a id="userModalButton" class="jayModalOpen" jayModalId="userModal"><i class="fi-torso">userModal</i></a>
+        
+        <!-- 用户模态框 -->
+        <div id="userModal" class="jayModal">
+            <h4 style="background-color: aqua;">当前主页</h4>
+
+            <!-- 分类下拉列表 -->
+            <div id="outerContainer" style="height: 25rem; width: 100%; overflow: hidden; position: relative;">
+                <div id="inneContainer" style="position: absolute; overflow-y: scroll;">
+                    <div id="element" style="height: 25rem;">
+                        
+                        <a href="#" class="jayAnchor jayDropdown" jayDropdownListId="id01" jayDropdownContainerId="target">元素1</a>
+                        <div id="id01" class="jayDropdownList">
+                            <a href="#" class="jayAnchor">Link 1</a>
+                            <a href="#" class="jayAnchor">Link 2</a>
+                            <a href="#" class="jayAnchor">Link 3</a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- 下拉列表容器 -->
+            <div id="target" class="jayDropdownContainer" style="left: 300px;"></div>
+            
+            
+            <!-- 我的主页 -->
+            <a id="loginModalButton" class="jayModalOpen" jayModalId="loginModal">登陆</a>
+            <a id="myView" class="checkLogin" href="http://127.0.0.1:5500/test.html">我的主页</a>
+        </div>
+        
+        <!-- 登陆模态框 -->
+        <div id="loginModal" class="jayModal">
+            <div style="margin-top: 2rem;">
+                <form id="loginForm" action="#" method="post">
+                    <input id="name" name="name" placeholder="账户名">
+                    <input id="password" name="password" placeholder="账户密码">
+                    <button id="loginSubmit" class="button" type="submit">登陆</button>
+                </form>
+            </div>
+        </div>
+            
+        <p>模态框是一个显示在页面头部的弹窗。模态框是一个显示在页面头部的弹窗。模态框是一个显示在页面头部的弹窗</p>
+        <p>模态框是一个显示在页面头部的弹窗。模态框是一个显示在页面头部的弹窗。模态框是一个显示在页面头部的弹窗</p>
+        <p>模态框是一个显示在页面头部的弹窗。模态框是一个显示在页面头部的弹窗</p>
+        <p>模态框是一个显示在页面头部的弹窗。模态框是一个显示在页面头部的弹窗</p>
+        <p>模态框是一个显示在页面头部的弹窗。模态框是一个显示在页面头部的弹窗</p>
+        <p>模态框是一个显示在页面头部的弹窗。模态框是一个显示在页面头部的弹窗</p>
+        <p>模态框是一个显示在页面头部的弹窗。模态框是一个显示在页面头部的弹窗</p>
+        <p>模态框是一个显示在页面头部的弹窗。模态框是一个显示在页面头部的弹窗</p>
+        <p>模态框是一个显示在页面头部的弹窗。模态框是一个显示在页面头部的弹窗</p>
+        <p>模态框是一个显示在页面头部的弹窗。</p>
+        <p>模态框是一个显示在页面头部的弹窗。</p>
+        <p>模态框是一个显示在页面头部的弹窗。</p>
+        <p>模态框是一个显示在页面头部的弹窗。</p>
+        <p>模态框是一个显示在页面头部的弹窗。</p>
+        <p>模态框是一个显示在页面头部的弹窗。</p>
+        <p>模态框是一个显示在页面头部的弹窗。</p>
+        <p>模态框是一个显示在页面头部的弹窗。</p>
+        <p>模态框是一个显示在页面头部的弹窗。</p>
+        
+    </div>
+
+
+
+<script>
+    $(document).ready(function() {
+        $(document).foundation();
+    })
+    
+</script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="center.jay.jaycenter.mapper.DiaryContentMapper">
+    <insert id="add" keyProperty="id"  useGeneratedKeys="true" parameterType="DiaryContent">
+        INSERT INTO diary_content (did, `index`, content, type, status)
+        VALUES (#{did}, #{index}, #{content}, #{type}, #{status})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM diary_content WHERE id=#{id}
+    </delete>
+
+    <update id="update" parameterType="DiaryContent" >
+        UPDATE diary_content
+        SET `index`=#{index}, content=#{content}, type=#{type}, status=#{status}
+        WHERE id=#{id}
+    </update>
+
+    <select id="get" resultType="DiaryContent">
+        SELECT * FROM diary_content WHERE id=#{id}
+    </select>
+
+    <select id="listByDid" resultType="DiaryContent">
+        SELECT * FROM diary_content WHERE did=#{did} ORDER BY `index`
+    </select>
+
+</mapper>
