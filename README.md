@@ -1,2 +1,2 @@
-- 一个简单的个人主页项目，主要主要实现markdown格式的笔记功能
+- 一个简单的个人主页项目，主要实现markdown格式的笔记功能
 - [项目详情](http://www.jay.center/fore_user_article_view?aid=38)
